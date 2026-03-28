@@ -174,7 +174,7 @@
 </head>
 <body>
     <div class="main-header">
-        <h1>⚡ حساب منطومات الطاقة الشمسية ⚡</h1>
+        <h1>⚡حساب منظومات الطاقة الشمسية⚡</h1>
         <p>By:
             Dr.Ahmed Al-Hadeethi</p>
     </div>
@@ -183,21 +183,21 @@
         <div class="card">
             <div class="card-header">
                 <span>📋</span>
-                <h2>أدخال البيانات</h2>
+                <h2>أدخال بيانات المنظومة</h2>
             </div>
             <div class="input-group">
                 <label>📊 قدرة المنظومة (أمبير A)</label>
                 <input type="number" id="loadAmps" placeholder="مثال: 20 أمبير" value="">
             </div>
             <div class="input-group">
-                <label>⏱️ ساعات التجهيز</label>
+                <label>⏱️ ساعات التجهيز من البطارية</label>
                 <input type="number" id="runHours" placeholder="مثال: 4 ساعات" value="">
             </div>
             <button class="btn-calc" id="calculateBtn">🚀 احسب النظام</button>
 
             <div class="result-card" style="margin-top: 1.2rem; background:#0f172a;">
                 <div class="result-header"><span>📐</span> <span>قدرة الاحمال</span></div>
-                <div class="result-row"><span class="result-label">الحمل الكهربائي </span><span class="result-value" id="previewWatts">—</span></div>
+                <div class="result-row"><span class="result-label">الحمل الكهربائي/ساعة </span><span class="result-value" id="previewWatts">—</span></div>
             </div>
         </div>
 
@@ -206,7 +206,6 @@
             <div id="resultsArea"><div class="empty-placeholder">⚙️ أدخل بيانات الحمل واضغط على زر الحساب</div></div>
             <div class="footnote">
                 * الأسعار تقريبية حسب نوع المنتج وحسب السوق العراقي (دينار عراقي).<br>
-                ** الألواح بقدرة 600 واط ، +500,000 دينار تكاليف كابلات وقواطع وحماية.
             </div>
         </div>
     </div>
@@ -218,13 +217,13 @@
 
     <script>
         // الأسعار
-        const inverterPriceMap = { 6000:750000, 8000:900000, 10000:1250000, 12000:1700000, 14000:2100000, 16000:2600000 };
+        const inverterPriceMap = { 6000:650000, 8000:850000, 10000:1150000, 12000:1500000, 14000:2000000, 16000:2500000 };
         const inverterSizes = [6000, 8000, 10000, 12000, 14000, 16000];
-        const batteryPriceMap = { 8:1500000, 10:1750000, 12:2100000, 14:2500000, 16:2900000 };
+        const batteryPriceMap = { 8:1300000, 10:1650000, 12:2000000, 14:2500000, 16:2900000 };
         const batterySizesKwh = [8, 10, 12, 14, 16];
 
         // ثوابت
-        const PANEL_WATT = 600;
+        const PANEL_WATT = 620;
         const PANEL_PRICE = 200000;
         const INSTALL_COST = 500000;
         const INVERTER_EFF = 0.93;
@@ -326,7 +325,7 @@
 
             let resultsHtml = `
                 <div class="result-card">
-                    <div class="result-header"><span>🔌</span> <span>(الإنفيرتر (العاكس</span></div>
+                    <div class="result-header"><span>🔌</span> <span>الإنفيرتر </span></div>
                     <div class="result-row"><span class="result-label">قدرة الإنفيرتر</span><span class="result-value">${inverter.sizeWatts/1000} كيلو واط</span></div>
                     <div class="result-row"><span class="result-label">العدد</span><span class="result-value">${inverter.quantity}</span></div>
                     <div class="result-row"><span class="result-label">💰 السعر الإجمالي</span><span class="result-value price">${inverterCost.toLocaleString()} د.ع</span></div>
@@ -349,13 +348,13 @@
 
                 <div class="result-card">
                     <div class="result-header"><span>🛠️</span> <span>تكاليف إضافية</span></div>
-                    <div class="result-row"><span class="result-label">كابلات + حماية + قواطع + تنصيب</span><span class="result-value price">${INSTALL_COST.toLocaleString()} د.ع</span></div>
+                    <div class="result-row"><span class="result-label">كابلات + قواطع + تنصيب</span><span class="result-value price">${INSTALL_COST.toLocaleString()} د.ع</span></div>
                 </div>
 
                 <div class="result-card" style="background: linear-gradient(135deg, #10b98130, #0f172a); border-right-color: #facc15;">
                     <div class="result-header"><span>📊</span> <span>الكميات الموصى بها</span></div>
                     <div class="summary-grid">
-                        <div class="summary-item"><div class="summary-number">${inverter.quantity}</div><div class="summary-label">الإنفيرترات</div><div class="summary-detail">${inverter.sizeWatts/1000} كيلوواط</div></div>
+                        <div class="summary-item"><div class="summary-number">${inverter.quantity}</div><div class="summary-label">الإنفيرتر</div><div class="summary-detail">${inverter.sizeWatts/1000} كيلوواط</div></div>
                         <div class="summary-item"><div class="summary-number">${battery.quantity}</div><div class="summary-label">البطاريات</div><div class="summary-detail">${battery.unitKwh} كيلوواط ساعي</div></div>
                         <div class="summary-item"><div class="summary-number">${panelsCount}</div><div class="summary-label">الألواح</div><div class="summary-detail">${PANEL_WATT} واط</div></div>
                     </div>
