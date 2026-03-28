@@ -216,11 +216,29 @@
     </div>
 
     <script>
-        // الأسعار
-        const inverterPriceMap = { 6000:650000, 8000:850000, 10000:1150000, 12000:1500000, 14000:2000000, 16000:2500000 };
-        const inverterSizes = [6000, 8000, 10000, 12000, 14000, 16000];
-        const batteryPriceMap = { 8:1300000, 10:1650000, 12:2000000, 14:2500000, 16:2900000 };
-        const batterySizesKwh = [8, 10, 12, 14, 16];
+        // الأسعار المحدثة
+        const inverterPriceMap = { 
+            4000: 500000,
+            6000: 650000, 
+            8000: 850000, 
+            10000: 1150000, 
+            12000: 1500000, 
+            14000: 2000000, 
+            16000: 2500000 
+        };
+        const inverterSizes = [4000, 6000, 8000, 10000, 12000, 14000, 16000];
+        
+        const batteryPriceMap = { 
+            3: 650000,
+            5: 800000,
+            6: 950000,
+            8: 1300000, 
+            10: 1650000, 
+            12: 2000000, 
+            14: 2500000, 
+            16: 2900000 
+        };
+        const batterySizesKwh = [3, 5, 6, 8, 10, 12, 14, 16]; // مرتبة تصاعدياً
 
         // ثوابت
         const PANEL_WATT = 620;
@@ -244,11 +262,12 @@
             return { sizeWatts: bestSize, quantity: units, totalWatts: bestSize * units };
         }
 
-        // اختيار البطاريات المتساوية (كلها بنفس الحجم)
+        // اختيار البطاريات المتساوية (كلها بنفس الحجم) مع دعم الأحجام الجديدة
         function selectEqualBatteries(requiredKwh) {
             let bestCount = Infinity;
             let bestSize = null;
-            for (let count = 1; count <= 10; count++) {
+            // نجرب جميع الأحجام المتاحة
+            for (let count = 1; count <= 20; count++) { // نزيد الحد الأقصى للعدد بسبب الأحجام الصغيرة
                 for (let size of batterySizesKwh) {
                     if (count * size >= requiredKwh) {
                         if (count < bestCount || (count === bestCount && size < bestSize)) {
