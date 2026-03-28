@@ -2,18 +2,33 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>حاسبة الطاقة الشمسية | Dr.Ahmed Mohammed Al-Hadeethi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>حساب منظومات الطاقة الشمسية</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* إزالة أي هوامش بيضاء وتغطية الخلفية بالكامل */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            background-attachment: fixed; /* يضمن تثبيت الخلفية حتى مع التمرير */
+        }
+
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             color: #f1f5f9;
+            background: transparent; /* الوراثة من html */
         }
+
         .main-header {
             background: rgba(0,0,0,0.5);
             backdrop-filter: blur(12px);
@@ -28,7 +43,7 @@
             -webkit-background-clip: text;
             color: transparent;
         }
-        .main-header p { font-size: 0.85rem; color: #94a3b8; margin-top: 0.3rem; }
+        .main-header p { font-size: 0.99rem; color: #94a3b8; margin-top: 0.3rem; }
         .container {
             max-width: 1300px;
             margin: 2rem auto;
@@ -159,47 +174,46 @@
 </head>
 <body>
     <div class="main-header">
-        <h1>⚡ حاسبة الطاقة الشمسية المتكاملة ⚡</h1>
-        <p>By: Dr.Ahmed Mohammed Al-Hadeethi</p>
+        <h1>⚡ حساب منطومات الطاقة الشمسية ⚡</h1>
+        <p>By:
+            Dr.Ahmed Al-Hadeethi</p>
     </div>
 
     <div class="container">
         <div class="card">
             <div class="card-header">
                 <span>📋</span>
-                <h2>أدخل بيانات الحمل فقط</h2>
-            </div>
-            <div class="info-chip">🔹 نظام كهربائي: طور واحد (220 فولت) - ثابت</div>
-            <div class="input-group">
-                <label>📊 تيار الحمل (أمبير A)</label>
-                <input type="number" id="loadAmps" placeholder="مثال: 25 أمبير" value="">
+                <h2>أدخال البيانات</h2>
             </div>
             <div class="input-group">
-                <label>⏱️ ساعات التشغيل اليومية (ساعة)</label>
-                <input type="number" id="runHours" placeholder="مثال: 8 ساعات" value="">
+                <label>📊 قدرة المنظومة (أمبير A)</label>
+                <input type="number" id="loadAmps" placeholder="مثال: 20 أمبير" value="">
+            </div>
+            <div class="input-group">
+                <label>⏱️ ساعات التجهيز</label>
+                <input type="number" id="runHours" placeholder="مثال: 4 ساعات" value="">
             </div>
             <button class="btn-calc" id="calculateBtn">🚀 احسب النظام</button>
 
             <div class="result-card" style="margin-top: 1.2rem; background:#0f172a;">
-                <div class="result-header"><span>📐</span> <span>قدرة الحمل المحسوبة</span></div>
-                <div class="result-row"><span class="result-label">الحمل الكهربائي الفعال (واط)</span><span class="result-value" id="previewWatts">—</span></div>
-                <!-- تم إزالة صف الطاقة اليومية المستهلكة حسب طلب المستخدم -->
+                <div class="result-header"><span>📐</span> <span>قدرة الاحمال</span></div>
+                <div class="result-row"><span class="result-label">الحمل الكهربائي </span><span class="result-value" id="previewWatts">—</span></div>
             </div>
         </div>
 
         <div class="card">
-            <div class="card-header"><span>🏆</span><h2>المكونات المُختارة تلقائياً + السعر</h2></div>
+            <div class="card-header"><span>🏆</span><h2>مكونات المنظومة</h2></div>
             <div id="resultsArea"><div class="empty-placeholder">⚙️ أدخل بيانات الحمل واضغط على زر الحساب</div></div>
             <div class="footnote">
-                * الأسعار تقريبية حسب السوق العراقي (دينار عراقي).<br>
-                ** الألواح بقدرة 600 واط مع التركيب، +500,000 دينار تكاليف كابلات وحماية.
+                * الأسعار تقريبية حسب نوع المنتج وحسب السوق العراقي (دينار عراقي).<br>
+                ** الألواح بقدرة 600 واط ، +500,000 دينار تكاليف كابلات وقواطع وحماية.
             </div>
         </div>
     </div>
 
     <div class="main-footer">
-        <div>🖥️ تصميم وتطوير: <span class="name">Dr.Ahmed Mohammed Al-Hadeethi</span></div>
-        <div class="free-hosting-note">✨ جاهز للنشر المجاني على GitHub Pages أو Netlify ✨</div>
+        <div>🖥️ Desigin&Development: <span class="name">Dr.Ahmed Mohammed Al-Hadeethi</span></div>
+                <div>🖥️ تصميم وتطوير: <span class="name">✨ د. أحمد الحديثي ✨</span></div>
     </div>
 
     <script>
@@ -214,7 +228,7 @@
         const PANEL_PRICE = 200000;
         const INSTALL_COST = 500000;
         const INVERTER_EFF = 0.93;
-        const DOD = 0.80;
+        const DOD = 0.85;
         const SYSTEM_DERATING = 0.75;
         const PF = 0.9;
         const SAFETY_MARGIN_INV = 1.2;
@@ -286,7 +300,6 @@
             let loadWatts = calculateLoadWatts(amps);
             let dailyEnergyWh = loadWatts * hours;
             document.getElementById('previewWatts').innerHTML = Math.round(loadWatts).toLocaleString() + ' W';
-            // لم نعد نعرض الطاقة اليومية في المعاينة
 
             // الطاقة من البطارية
             let energyFromBattery = dailyEnergyWh / INVERTER_EFF;
@@ -311,18 +324,17 @@
 
             let totalCost = inverterCost + batteryCost + panelsCost + INSTALL_COST;
 
-            // بناء HTML (لا يحتوي على الطاقة اليومية)
             let resultsHtml = `
                 <div class="result-card">
-                    <div class="result-header"><span>🔌</span> <span>الإنفيرتر</span></div>
-                    <div class="result-row"><span class="result-label">حجم الإنفيرتر المناسب</span><span class="result-value">${inverter.sizeWatts/1000} كيلوواط</span></div>
+                    <div class="result-header"><span>🔌</span> <span>(الإنفيرتر (العاكس</span></div>
+                    <div class="result-row"><span class="result-label">قدرة الإنفيرتر</span><span class="result-value">${inverter.sizeWatts/1000} كيلو واط</span></div>
                     <div class="result-row"><span class="result-label">العدد</span><span class="result-value">${inverter.quantity}</span></div>
                     <div class="result-row"><span class="result-label">💰 السعر الإجمالي</span><span class="result-value price">${inverterCost.toLocaleString()} د.ع</span></div>
                 </div>
 
                 <div class="result-card">
-                    <div class="result-header"><span>🔋</span> <span>بنك البطاريات</span></div>
-                    <div class="result-row"><span class="result-label">حجم البطارية المناسب</span><span class="result-value">${battery.unitKwh} كيلوواط ساعي</span></div>
+                    <div class="result-header"><span>🔋</span> <span>البطاريات</span></div>
+                    <div class="result-row"><span class="result-label">سعة البطارية</span><span class="result-value">${battery.unitKwh} كيلو واط </span></div>
                     <div class="result-row"><span class="result-label">العدد</span><span class="result-value">${battery.quantity}</span></div>
                     <div class="result-row"><span class="result-label">💰 السعر الإجمالي</span><span class="result-value price">${batteryCost.toLocaleString()} د.ع</span></div>
                 </div>
@@ -330,14 +342,14 @@
                 <div class="result-card">
                     <div class="result-header"><span>☀️</span> <span>الألواح الشمسية</span></div>
                     <div class="result-row"><span class="result-label">قدرة اللوح الواحد</span><span class="result-value">${PANEL_WATT} واط</span></div>
-                    <div class="result-row"><span class="result-label">القدرة الإجمالية للألواح</span><span class="result-value">${totalPanelKw.toFixed(1)} كيلوواط</span></div>
+                    <div class="result-row"><span class="result-label">القدرة الكلية للألواح</span><span class="result-value">${totalPanelKw.toFixed(1)} كيلوواط</span></div>
                     <div class="result-row"><span class="result-label">عدد الألواح</span><span class="result-value">${panelsCount}</span></div>
-                    <div class="result-row"><span class="result-label">💰 السعر الإجمالي (مع التركيب)</span><span class="result-value price">${panelsCost.toLocaleString()} د.ع</span></div>
+                    <div class="result-row"><span class="result-label">💰 السعر الإجمالي </span><span class="result-value price">${panelsCost.toLocaleString()} د.ع</span></div>
                 </div>
 
                 <div class="result-card">
                     <div class="result-header"><span>🛠️</span> <span>تكاليف إضافية</span></div>
-                    <div class="result-row"><span class="result-label">كابلات + حماية + تنصيب</span><span class="result-value price">${INSTALL_COST.toLocaleString()} د.ع</span></div>
+                    <div class="result-row"><span class="result-label">كابلات + حماية + قواطع + تنصيب</span><span class="result-value price">${INSTALL_COST.toLocaleString()} د.ع</span></div>
                 </div>
 
                 <div class="result-card" style="background: linear-gradient(135deg, #10b98130, #0f172a); border-right-color: #facc15;">
@@ -350,7 +362,7 @@
                 </div>
 
                 <div class="total-cost">
-                    <div>💵 التكلفة التقديرية الإجمالية</div>
+                    <div>💵 الـكلفة التقديرية الإجمالية</div>
                     <div class="total-number">${totalCost.toLocaleString()} د.ع</div>
                     <hr>
                     <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
